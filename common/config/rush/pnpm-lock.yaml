@@ -310,6 +310,61 @@ importers:
         specifier: ^8.54.0
         version: 8.57.1
 
+  ../../apps/demo-node-form:
+    dependencies:
+      '@douyinfe/semi-icons':
+        specifier: ^2.72.3
+        version: 2.72.3(react@18.3.1)
+      '@douyinfe/semi-ui':
+        specifier: ^2.72.3
+        version: 2.72.3(acorn@8.14.0)(react-dom@18.3.1)(react@18.3.1)
+      '@flowgram.ai/free-layout-editor':
+        specifier: workspace:*
+        version: link:../../packages/client/free-layout-editor
+      '@flowgram.ai/free-snap-plugin':
+        specifier: workspace:*
+        version: link:../../packages/plugins/free-snap-plugin
+      '@flowgram.ai/minimap-plugin':
+        specifier: workspace:*
+        version: link:../../packages/plugins/minimap-plugin
+      react:
+        specifier: ^18
+        version: 18.3.1
+      react-dom:
+        specifier: ^18
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@flowgram.ai/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@flowgram.ai/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+      '@rspack/cli':
+        specifier: 0.2.1
+        version: 0.2.1(react-refresh@0.16.0)(webpack@5.76.0)
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
+      '@types/node':
+        specifier: ^18
+        version: 18.19.68
+      '@types/react':
+        specifier: ^18
+        version: 18.3.16
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.5(@types/react@18.3.16)
+      '@types/styled-components':
+        specifier: ^5
+        version: 5.1.34
+      '@typescript-eslint/parser':
+        specifier: ^6.10.0
+        version: 6.21.0(eslint@8.57.1)(typescript@5.0.4)
+      eslint:
+        specifier: ^8.54.0
+        version: 8.57.1
+
   ../../apps/docs:
     dependencies:
       '@codesandbox/sandpack-react':
@@ -333,6 +388,9 @@ importers:
       '@flowgram.ai/demo-free-layout-simple':
         specifier: workspace:*
         version: link:../demo-free-layout-simple
+      '@flowgram.ai/demo-node-form':
+        specifier: workspace:*
+        version: link:../demo-node-form
       '@flowgram.ai/fixed-layout-editor':
         specifier: workspace:*
         version: link:../../packages/client/fixed-layout-editor
