@@ -1,12 +1,13 @@
 import {
   DEFAULT_DEMO_REGISTRY,
   DEFAULT_INITIAL_DATA,
+  defaultInitialDataTs,
   fieldWrapperCss,
   fieldWrapperTs,
 } from '@flowgram.ai/demo-node-form';
 
 import { PreviewEditor } from '../preview-editor';
-import { Editor } from '.';
+import { Editor } from './editor';
 
 const registryCode = {
   code: `import {
@@ -71,28 +72,10 @@ export const nodeRegistry: WorkflowNodeRegistry = {
   active: true,
 };
 
-const initialDataCode = {
-  code: `import { WorkflowJSON } from '@flowgram.ai/free-layout-editor';
-
-export const DEFAULT_INITIAL_DATA: WorkflowJSON = {
-  nodes: [
-    {
-      id: 'node_0',
-      type: 'custom',
-      meta: {
-        position: { x: 400, y: 0 },
-      },
-    },
-  ],
-  edges: [],
-};`,
-  active: true,
-};
-
 export const NodeFormBasicPreview = () => {
   const files = {
     'node-registry.tsx': registryCode,
-    'initial-data.ts': initialDataCode,
+    'initial-data.ts': { code: defaultInitialDataTs, active: true },
     'field-wrapper.tsx': { code: fieldWrapperTs, active: true },
     'field-wrapper.css': { code: fieldWrapperCss, active: true },
   };

@@ -51,14 +51,18 @@ export enum DataEvent {
 
 export type EffectReturn = () => void;
 
-export type Effect<TFieldValue = any, TFormValues = any> = (props: {
+export interface EffectProps<TFieldValue = any, TFormValues = any> {
   name: FieldName;
   value: TFieldValue;
   prevValue?: TFieldValue;
   formValues: TFormValues;
   form: IForm;
   context: NodeContext;
-}) => void | EffectReturn;
+}
+
+export type Effect<TFieldValue = any, TFormValues = any> = (
+  props: EffectProps<TFieldValue, TFormValues>
+) => void | EffectReturn;
 
 export type ArrayAppendEffect<TFieldValue = any, TFormValues = any> = (props: {
   index: number;

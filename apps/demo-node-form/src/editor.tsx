@@ -14,7 +14,7 @@ interface EditorProps {
 }
 
 export const Editor = ({ registry, initialData }: EditorProps) => {
-  const editorProps = useEditorProps({ registry, initialData });
+  const editorProps = useEditorProps({ registries: [registry], initialData });
   return (
     <FreeLayoutEditorProvider {...editorProps}>
       <div className="demo-free-container">

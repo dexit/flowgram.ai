@@ -1,0 +1,12 @@
+.demo-node-content {
+  padding: 8px 12px;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.demo-node-title {
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  margin: 4px 0px 12px 0px;
+}
