@@ -34,7 +34,8 @@
     "@flowgram.ai/free-snap-plugin": "workspace:*",
     "@flowgram.ai/minimap-plugin": "workspace:*",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "styled-components": "^5"
   },
   "devDependencies": {
     "@flowgram.ai/ts-config": "workspace:*",

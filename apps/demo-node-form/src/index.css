@@ -11,11 +11,17 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.demo-free-node-title {
-    background-color: #93bfe2;
+.demo-node-content {
+    padding: 8px 12px;
+    flex-grow: 1;
     width: 100%;
-    border-radius: 8px 8px 0 0;
-    padding: 4px 12px;
+}
+
+.demo-node-title {
+    font-weight: 500;
+    font-size: 14px;
+    width: 100%;
+    margin: 4px 0px 12px 0px;
 }
 .demo-free-node-content {
     padding: 4px 12px;

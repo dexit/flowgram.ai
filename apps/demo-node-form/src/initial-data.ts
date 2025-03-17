@@ -8,10 +8,6 @@ export const DEFAULT_INITIAL_DATA: WorkflowJSON = {
       meta: {
         position: { x: 400, y: 0 },
       },
-      data: {
-        title: 'Custom',
-        content: 'Custom node content',
-      },
     },
   ],
   edges: [],

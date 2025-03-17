@@ -1,42 +1,104 @@
+import {
+  DEFAULT_DEMO_REGISTRY,
+  DEFAULT_INITIAL_DATA,
+  fieldWrapperCss,
+  fieldWrapperTs,
+} from '@flowgram.ai/demo-node-form';
+
 import { PreviewEditor } from '../preview-editor';
 import { Editor } from '.';
 
-const indexCode = {
+const registryCode = {
   code: `import {
-  EditorRenderer,
-  FreeLayoutEditorProvider,
+  Field,
+  FieldRenderProps,
+  FormMeta,
+  ValidateTrigger,
 } from '@flowgram.ai/free-layout-editor';
+import { Input } from '@douyinfe/semi-ui';
 
-import { useEditorProps } from './hooks/use-editor-props'
-import '@flowgram.ai/free-layout-editor/index.css';
-import './index.css';
+// FieldWrapper is not provided by sdk, it can be customized
+import { FieldWrapper } from './components';
 
-export const App = () => {
-  const editorProps = useEditorProps()
-  return (
-    <FreeLayoutEditorProvider {...editorProps}>
-      <div className="demo-free-container">
-        <div className="demo-free-layout">
-          <NodeAddPanel />
-          <EditorRenderer className="demo-free-editor" />
-        </div>
-        <Tools />
-        <Minimap />
-      </div>
-    </FreeLayoutEditorProvider>
-  )
+const render = () => (
+  <div className="demo-node-content">
+    <div className="demo-node-title">Basic Node</div>
+    <Field name="name">
+      {({ field, fieldState }: FieldRenderProps<string>) => (
+        <FieldWrapper required title="Name" error={fieldState.errors?.[0]?.message}>
+          <Input size={'small'} {...field} />
+        </FieldWrapper>
+      )}
+    </Field>
+
+    <Field name="city">
+      {({ field, fieldState }: FieldRenderProps<string>) => (
+        <FieldWrapper required title="City" error={fieldState.errors?.[0]?.message}>
+          <Input size={'small'} {...field} />
+        </FieldWrapper>
+      )}
+    </Field>
+  </div>
+);
+
+const formMeta: FormMeta = {
+  render,
+  defaultValues: { name: 'Tina', city: 'Hangzhou' },
+  validateTrigger: ValidateTrigger.onChange,
+  validate: {
+    name: ({ value }) => {
+      if (!value) {
+        return 'Name is required';
+      }
+    },
+    city: ({ value }) => {
+      if (!value) {
+        return 'City is required';
+      }
+    }
+  }
 };
-  `,
+
+
+
+export const nodeRegistry: WorkflowNodeRegistry = {
+  type: 'custom',
+  meta: {},
+  defaultPorts: [{ type: 'output' }, { type: 'input' }],
+  formMeta
+};
+`,
+  active: true,
+};
+
+const initialDataCode = {
+  code: `import { WorkflowJSON } from '@flowgram.ai/free-layout-editor';
+
+export const DEFAULT_INITIAL_DATA: WorkflowJSON = {
+  nodes: [
+    {
+      id: 'node_0',
+      type: 'custom',
+      meta: {
+        position: { x: 400, y: 0 },
+      },
+    },
+  ],
+  edges: [],
+};`,
   active: true,
 };
 
 export const NodeFormBasicPreview = () => {
   const files = {
-    'index.tsx': indexCode,
+    'node-registry.tsx': registryCode,
+    'initial-data.ts': initialDataCode,
+    'field-wrapper.tsx': { code: fieldWrapperTs, active: true },
+    'field-wrapper.css': { code: fieldWrapperCss, active: true },
   };
   return (
     <PreviewEditor files={files} previewStyle={{ height: 500 }} editorStyle={{ height: 500 }}>
-      <Editor />
+      <Editor registry={DEFAULT_DEMO_REGISTRY} initialData={DEFAULT_INITIAL_DATA} />
     </PreviewEditor>
   );
 };

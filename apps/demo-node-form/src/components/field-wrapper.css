@@ -1,0 +1,18 @@
+.error-message {
+  color: #f5222d !important;
+}
+
+.required {
+  color: #f5222d !important;
+  padding-left: 4px
+}
+
+.field-wrapper {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.field-title {
+  margin-bottom: 6px;
+}
+
