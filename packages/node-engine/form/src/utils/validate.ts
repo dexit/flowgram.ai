@@ -33,11 +33,5 @@ export function feedbackToFieldErrorsOrWarnings<T>(name: string, feedback?: Feed
   } as T;
 }
 
-export const hasError = (errors: Errors) => {
-  for (let fieldErrors in errors) {
-    if (fieldErrors.length) {
-      return true;
-    }
-  }
-  return false;
-};
+export const hasError = (errors: Errors) =>
+  Object.keys(errors).some((key) => errors[key]?.length > 0);
