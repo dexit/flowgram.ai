@@ -135,6 +135,10 @@ export class FormModelV2 extends FormModel implements Disposable {
     return this.node.getNodeRegistry().formMeta;
   }
 
+  get values() {
+    return this.nativeFormModel?.values;
+  }
+
   protected _feedbacks: FormFeedback[] = [];
 
   get feedbacks(): FormFeedback[] {
