@@ -4,7 +4,7 @@ import './field-wrapper.css';
 
 interface FieldWrapperProps {
   required?: boolean;
-  title: string;
+  title?: string;
   children?: React.ReactNode;
   error?: string;
   note?: string;

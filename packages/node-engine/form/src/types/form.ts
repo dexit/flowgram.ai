@@ -108,7 +108,7 @@ export interface CreateFormReturn<TValues> {
 }
 
 export interface OnFormValuesChangeOptions {
-  action?: 'array-append' | 'array-splice';
+  action?: 'array-append' | 'array-splice' | 'array-swap';
   indexes?: number[];
 }
 

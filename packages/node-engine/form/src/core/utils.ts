@@ -5,7 +5,7 @@ import { Errors, Feedback, OnFormValuesChangePayload, ValidateTrigger, Warnings 
 import { Path } from './path';
 
 export function updateFeedbacksName(feedbacks: Feedback<any>[], name: string) {
-  return feedbacks.map((f) => ({
+  return (feedbacks || []).map((f) => ({
     ...f,
     name,
   }));
@@ -91,7 +91,7 @@ export namespace FieldEventUtils {
   ) {
     const { name: changedName, options } = payload;
 
-    if (options?.action === 'array-splice') {
+    if (options?.action === 'array-splice' || options?.action === 'array-swap') {
       // const splicedIndexes = options?.indexes || [];
       //
       // const splicedPaths = splicedIndexes.map(index => new Path(changedName).concat(index));
@@ -109,7 +109,7 @@ export namespace FieldEventUtils {
       //   return false;
       // }
 
-      // splice 情况下仅触发数组field的校验
+      // splice 和 swap 都属于数组跟级别的变更，仅需触发数组field的校验, 无需校验子项
       return fieldName === changedName;
     }
 

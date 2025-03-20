@@ -204,6 +204,7 @@ export class FieldArrayModel<TValue = FieldValue> extends FieldModel<Array<TValu
       );
     }
 
+    const oldFormValues = this.form.values;
     const tempValue = [...this.value];
 
     const fromValue = tempValue[from];
@@ -212,7 +213,46 @@ export class FieldArrayModel<TValue = FieldValue> extends FieldModel<Array<TValu
     tempValue[to] = fromValue;
     tempValue[from] = toValue;
 
-    this.form.setValueIn(this.name, tempValue);
+    this.form.store.setIn(this.path, tempValue);
+    this.form.fireOnFormValuesChange({
+      values: this.form.values,
+      prevValues: oldFormValues,
+      name: this.name,
+      options: {
+        action: 'array-swap',
+        indexes: [from, to],
+      },
+    });
+
+    // swap related FieldModels
+    const newFieldMap = new Map<string, FieldModel>(this.form.fieldMap);
+
+    const fromFields = this.findAllFieldsAt(from);
+    const toFields = this.findAllFieldsAt(to);
+    const fromRootPath = this.getPathAt(from);
+    const toRootPath = this.getPathAt(to);
+    const leafFieldsModified: FieldModel[] = [];
+    fromFields.forEach((f) => {
+      const newName = f.path.replaceParent(fromRootPath, toRootPath).toString();
+      f.name = newName;
+      if (!f.children.length) {
+        f.updateNameForLeafState(newName);
+        leafFieldsModified.push(f);
+      }
+      newFieldMap.set(newName, f);
+    });
+    toFields.forEach((f) => {
+      const newName = f.path.replaceParent(toRootPath, fromRootPath).toString();
+      f.name = newName;
+      if (!f.children.length) {
+        f.updateNameForLeafState(newName);
+      }
+      newFieldMap.set(newName, f);
+      leafFieldsModified.push(f);
+    });
+    this.form.fieldMap = newFieldMap;
+    leafFieldsModified.forEach((f) => f.bubbleState());
+    this.form.alignStateWithFieldMap();
   }
 
   move(from: number, to: number) {
@@ -236,5 +276,53 @@ export class FieldArrayModel<TValue = FieldValue> extends FieldModel<Array<TValu
     tempValue.splice(to, 0, fromValue);
 
     this.form.setValueIn(this.name, tempValue);
+
+    // todo(fix): should move fields in order to make sure fields' state is also moved
+  }
+
+  protected insertAt(index: number, value: TValue) {
+    if (!this.value) {
+      return;
+    }
+
+    if (index < 0 || index > this.value.length) {
+      throw new Error(`[Form]: FieldArrayModel.insertAt Error: index exceeds array boundary`);
+    }
+
+    const tempValue = [...this.value];
+    tempValue.splice(index, 0, value);
+    this.form.setValueIn(this.name, tempValue);
+
+    // todo: should move field in order to make sure field state is also moved
+  }
+
+  /**
+   * get element path at given index
+   * @param index
+   * @protected
+   */
+  protected getPathAt(index: number) {
+    return this.path.concat(index);
+  }
+
+  /**
+   * find all fields including child and grandchild fields at given index.
+   * @param index
+   * @protected
+   */
+  protected findAllFieldsAt(index: number) {
+    const rootPath = this.getPathAt(index);
+    const rootPathString = rootPath.toString();
+
+    const res: FieldModel[] = this.form.fieldMap.get(rootPathString)
+      ? [this.form.fieldMap.get(rootPathString)!]
+      : [];
+
+    this.form.fieldMap.forEach((field, fieldName) => {
+      if (rootPath.isChildOrGrandChild(fieldName)) {
+        res.push(field);
+      }
+    });
+    return res;
   }
 }

@@ -1,0 +1,7 @@
+.array-item-wrapper {
+  display: flex;
+  align-items: center;
+}
+.icon-button-popover {
+  padding: 6px 8px;
+}

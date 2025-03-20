@@ -4,6 +4,8 @@ import { Errors, ValidateTrigger, Warnings } from '@/types';
 import { FormModel } from '@/core/form-model';
 import { type FieldArrayModel } from '@/core/field-array-model';
 
+import { FeedbackLevel } from '../src/types';
+
 describe('FormArrayModel', () => {
   let formModel = new FormModel();
   describe('children', () => {
@@ -580,53 +582,171 @@ describe('FormArrayModel', () => {
 
     it('can swap from 0 to middle index', () => {
       const arrayField = formModel.createFieldArray('arr');
-      arrayField!.append('a');
-      arrayField!.append('b');
-      arrayField!.append('c');
+      const a = arrayField!.append('a');
+      const b = arrayField!.append('b');
+      const c = arrayField!.append('c');
 
       formModel.init({});
+
+      a.state.errors = {
+        'arr.0': [{ name: 'arr.0', message: 'err0', level: FeedbackLevel.Error }],
+      };
+      b.state.errors = {
+        'arr.1': [{ name: 'arr.1', message: 'err1', level: FeedbackLevel.Error }],
+      };
 
       expect(formModel.values).toEqual({ arr: ['a', 'b', 'c'] });
       arrayField.swap(0, 1);
       expect(formModel.values).toEqual({ arr: ['b', 'a', 'c'] });
+      expect(formModel.getField('arr.0').state.errors).toEqual({
+        'arr.0': [{ name: 'arr.0', message: 'err1', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.1').state.errors).toEqual({
+        'arr.1': [{ name: 'arr.1', message: 'err0', level: FeedbackLevel.Error }],
+      });
     });
 
     it('can swap from 0 to last index', () => {
       const arrayField = formModel.createFieldArray('arr');
-      arrayField!.append('a');
-      arrayField!.append('b');
-      arrayField!.append('c');
+      const a = arrayField!.append('a');
+      const b = arrayField!.append('b');
+      const c = arrayField!.append('c');
 
       formModel.init({});
+
+      a.state.errors = {
+        'arr.0': [{ name: 'arr.0', message: 'err0', level: FeedbackLevel.Error }],
+      };
+      c.state.errors = {
+        'arr.2': [{ name: 'arr.2', message: 'err2', level: FeedbackLevel.Error }],
+      };
 
       expect(formModel.values).toEqual({ arr: ['a', 'b', 'c'] });
       arrayField.swap(0, 2);
       expect(formModel.values).toEqual({ arr: ['c', 'b', 'a'] });
+      expect(formModel.getField('arr.0').state.errors).toEqual({
+        'arr.0': [{ name: 'arr.0', message: 'err2', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.2').state.errors).toEqual({
+        'arr.2': [{ name: 'arr.2', message: 'err0', level: FeedbackLevel.Error }],
+      });
     });
     it('can swap from middle index to last index', () => {
       const arrayField = formModel.createFieldArray('arr');
-      arrayField!.append('a');
-      arrayField!.append('b');
-      arrayField!.append('c');
+      const a = arrayField!.append('a');
+      const b = arrayField!.append('b');
+      const c = arrayField!.append('c');
 
       formModel.init({});
+
+      b.state.errors = {
+        'arr.1': [{ name: 'arr.1', message: 'err1', level: FeedbackLevel.Error }],
+      };
+      c.state.errors = {
+        'arr.2': [{ name: 'arr.2', message: 'err2', level: FeedbackLevel.Error }],
+      };
 
       expect(formModel.values).toEqual({ arr: ['a', 'b', 'c'] });
       arrayField.swap(1, 2);
       expect(formModel.values).toEqual({ arr: ['a', 'c', 'b'] });
+      expect(formModel.getField('arr.1').state.errors).toEqual({
+        'arr.1': [{ name: 'arr.1', message: 'err2', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.2').state.errors).toEqual({
+        'arr.2': [{ name: 'arr.2', message: 'err1', level: FeedbackLevel.Error }],
+      });
     });
     it('can swap from middle index to another middle index', () => {
       const arrayField = formModel.createFieldArray('arr');
       arrayField!.append('a');
-      arrayField!.append('b');
-      arrayField!.append('c');
+      const b = arrayField!.append('b');
+      const c = arrayField!.append('c');
       arrayField!.append('d');
 
       formModel.init({});
 
+      b.state.errors = {
+        'arr.1': [{ name: 'arr.1', message: 'err1', level: FeedbackLevel.Error }],
+      };
+      c.state.errors = {
+        'arr.2': [{ name: 'arr.2', message: 'err2', level: FeedbackLevel.Error }],
+      };
+
       expect(formModel.values).toEqual({ arr: ['a', 'b', 'c', 'd'] });
       arrayField.swap(1, 2);
       expect(formModel.values).toEqual({ arr: ['a', 'c', 'b', 'd'] });
+      expect(formModel.getField('arr.1').state.errors).toEqual({
+        'arr.1': [{ name: 'arr.1', message: 'err2', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.2').state.errors).toEqual({
+        'arr.2': [{ name: 'arr.2', message: 'err1', level: FeedbackLevel.Error }],
+      });
+    });
+
+    it('can swap for nested array', () => {
+      const arrayField = formModel.createFieldArray('arr');
+      const a = arrayField!.append({ x: 'x0', y: 'y0' });
+      const b = arrayField!.append({ x: 'x1', y: 'y1' });
+      const ax = formModel.createField('arr.0.x');
+      const ay = formModel.createField('arr.0.y');
+      const bx = formModel.createField('arr.1.x');
+      const by = formModel.createField('arr.1.y');
+
+      formModel.init({});
+
+      ax.state.errors = {
+        'arr.0.x': [{ name: 'arr.0.x', message: 'err0x', level: FeedbackLevel.Error }],
+      };
+      bx.state.errors = {
+        'arr.1.x': [{ name: 'arr.1.x', message: 'err1x', level: FeedbackLevel.Error }],
+      };
+
+      expect(formModel.values).toEqual({
+        arr: [
+          { x: 'x0', y: 'y0' },
+          { x: 'x1', y: 'y1' },
+        ],
+      });
+      arrayField.swap(0, 1);
+      expect(formModel.values).toEqual({
+        arr: [
+          { x: 'x1', y: 'y1' },
+          { x: 'x0', y: 'y0' },
+        ],
+      });
+      expect(formModel.getField('arr.0.x').state.errors).toEqual({
+        'arr.0.x': [{ name: 'arr.0.x', message: 'err1x', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.1.x').state.errors).toEqual({
+        'arr.1.x': [{ name: 'arr.1.x', message: 'err0x', level: FeedbackLevel.Error }],
+      });
+
+      // assert form.state.errors
+      expect(formModel.state.errors['arr.0.x']).toEqual([
+        { name: 'arr.0.x', message: 'err1x', level: FeedbackLevel.Error },
+      ]);
+      expect(formModel.state.errors['arr.1.x']).toEqual([
+        { name: 'arr.1.x', message: 'err0x', level: FeedbackLevel.Error },
+      ]);
+    });
+
+    it('should have correct form.state.errors after swapping invalid field with valid field', () => {
+      const arrayField = formModel.createFieldArray('arr');
+      const a = arrayField!.append('a');
+      const b = arrayField!.append('b');
+      arrayField!.append('c');
+
+      formModel.init({});
+
+      b.state.errors = {
+        'arr.1': [{ name: 'arr.1', message: 'err1', level: FeedbackLevel.Error }],
+      };
+
+      arrayField.swap(0, 1);
+      expect(formModel.getField('arr.0').state.errors).toEqual({
+        'arr.0': [{ name: 'arr.0', message: 'err1', level: FeedbackLevel.Error }],
+      });
+      expect(formModel.getField('arr.1').state.errors).toEqual(undefined);
     });
 
     it('should trigger array effect and child effect', () => {
