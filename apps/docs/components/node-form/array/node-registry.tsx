@@ -10,7 +10,7 @@ import {
   FieldArrayRenderProps,
 } from '@flowgram.ai/free-layout-editor';
 import { FieldWrapper } from '@flowgram.ai/demo-node-form';
-import { Input, Button, Tooltip, Popover } from '@douyinfe/semi-ui';
+import { Input, Button, Popover } from '@douyinfe/semi-ui';
 import { IconPlus, IconCrossCircleStroked, IconArrowDown } from '@douyinfe/semi-icons';
 import './index.css';
 import '../index.css';
@@ -22,7 +22,7 @@ export const render = () => (
       {({ field, fieldState }: FieldArrayRenderProps<string>) => (
         <FieldWrapper title={'My Array'}>
           {field.map((child, index) => (
-            <Field name={`${child.name}`} key={child.key}>
+            <Field name={child.name} key={child.key}>
               {({ field: childField, fieldState: childState }: FieldRenderProps<string>) => (
                 <FieldWrapper error={childState.errors?.[0]?.message}>
                   <div className="array-item-wrapper">
@@ -91,19 +91,17 @@ const formMeta: FormMeta<FormData> = {
       value.length > 8 ? 'max length exceeded: current length is ' + value.length : undefined,
   },
   effect: {
-    field1: [
+    'array.*': [
       {
-        event: DataEvent.onValueChange,
-        effect: ({ value }: EffectFuncProps<string, FormData>) => {
-          console.log('field1 value:', value);
+        event: DataEvent.onValueInit,
+        effect: ({ value, name }: EffectFuncProps<string, FormData>) => {
+          console.log(name + ' value init to ', value);
         },
       },
-    ],
-    field2: [
       {
         event: DataEvent.onValueChange,
-        effect: ({ value, form }: EffectFuncProps<string, FormData>) => {
-          form.setValueIn('field3', 'field2 value is ' + value);
+        effect: ({ value, name }: EffectFuncProps<string, FormData>) => {
+          console.log(name + ' value changed to ', value);
         },
       },
     ],

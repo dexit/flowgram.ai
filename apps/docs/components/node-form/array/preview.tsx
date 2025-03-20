@@ -18,68 +18,102 @@ const nodeRegistryFile = {
   FormMeta,
   ValidateTrigger,
   WorkflowNodeRegistry,
+  FieldArray,
+  FieldArrayRenderProps,
 } from '@flowgram.ai/free-layout-editor';
 import { FieldWrapper } from '@flowgram.ai/demo-node-form';
-import { Input } from '@douyinfe/semi-ui';
+import { Input, Button, Popover } from '@douyinfe/semi-ui';
+import { IconPlus, IconCrossCircleStroked, IconArrowDown } from '@douyinfe/semi-icons';
+import './index.css';
 import '../index.css';
 
-const render = () => (
+export const render = () => (
   <div className="demo-node-content">
-    <div className="demo-node-title">Effect Examples</div>
-    <Field name="field1">
-      {({ field }: FieldRenderProps<string>) => (
-        <FieldWrapper
-          title="Basic effect"
-          note={'The following field will console.log field value on value change'}
-        >
-          <Input size={'small'} {...field} />
+    <div className="demo-node-title">Array Examples</div>
+    <FieldArray name="array">
+      {({ field, fieldState }: FieldArrayRenderProps<string>) => (
+        <FieldWrapper title={'My Array'}>
+          {field.map((child, index) => (
+            <Field name={child.name} key={child.key}>
+              {({ field: childField, fieldState: childState }: FieldRenderProps<string>) => (
+                <FieldWrapper error={childState.errors?.[0]?.message}>
+                  <div className="array-item-wrapper">
+                    <Input {...childField} size={'small'} />
+                    {index < field.value!.length - 1 ? (
+                      <Popover
+                        content={'swap with next element'}
+                        className={'icon-button-popover'}
+                        showArrow
+                        position={'topLeft'}
+                      >
+                        <Button
+                          theme="borderless"
+                          size={'small'}
+                          icon={<IconArrowDown />}
+                          onClick={() => field.swap(index, index + 1)}
+                        />
+                      </Popover>
+                    ) : null}
+                    <Popover
+                      content={'delete current element'}
+                      className={'icon-button-popover'}
+                      showArrow
+                      position={'topLeft'}
+                    >
+                      <Button
+                        theme="borderless"
+                        size={'small'}
+                        icon={<IconCrossCircleStroked />}
+                        onClick={() => field.delete(index)}
+                      />
+                    </Popover>
+                  </div>
+                </FieldWrapper>
+              )}
+            </Field>
+          ))}
+          <div>
+            <Button
+              size={'small'}
+              theme="borderless"
+              icon={<IconPlus />}
+              onClick={() => field.append('default')}
+            >
+              Add
+            </Button>
+          </div>
         </FieldWrapper>
       )}
-    </Field>
-
-    <Field name="field2">
-      {({ field }: FieldRenderProps<string>) => (
-        <FieldWrapper
-          title="Control other fields"
-          note={'The following field will change Field 3 value on value change'}
-        >
-          <Input size={'small'} {...field} />
-        </FieldWrapper>
-      )}
-    </Field>
-    <Field name="field3">
-      {({ field }: FieldRenderProps<string>) => (
-        <FieldWrapper title="Controlled by other fields">
-          <Input size={'small'} {...field} />
-        </FieldWrapper>
-      )}
-    </Field>
+    </FieldArray>
   </div>
 );
 
 interface FormData {
-  field1: string;
-  field2: string;
-  field3: string;
+  array: string[];
 }
 
 const formMeta: FormMeta<FormData> = {
   render,
   validateTrigger: ValidateTrigger.onChange,
+  defaultValues: {
+    array: ['default'],
+  },
+  validate: {
+    'array.*': ({ value }) =>
+      value.length > 8 ? 'max length exceeded: current length is ' + value.length : undefined,
+  },
   effect: {
-    field1: [
+    'array.*': [
       {
-        event: DataEvent.onValueChange,
-        effect: ({ value }: EffectFuncProps<string, FormData>) => {
-          console.log('field1 value:', value);
+        event: DataEvent.onValueInit,
+        effect: ({ value, name }: EffectFuncProps<string, FormData>) => {
+          console.log(name + ' value init to ', value);
         },
       },
-    ],
-    field2: [
       {
         event: DataEvent.onValueChange,
-        effect: ({ value, form }: EffectFuncProps<string, FormData>) => {
-          form.setValueIn('field3', 'field2 value is ' + value);
+        effect: ({ value, name }: EffectFuncProps<string, FormData>) => {
+          console.log(name + ' value changed to ', value);
         },
       },
     ],
