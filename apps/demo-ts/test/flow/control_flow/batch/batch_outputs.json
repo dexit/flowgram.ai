@@ -1,0 +1,131 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "431769850114",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "batch_000a2ce585e",
+        "type": "batch",
+        "definition": {
+          "info": {
+            "title": "batch",
+            "description": "ForEach",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Loop.svg"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "concurrency": { "type": "number" },
+              "list": { "type": "array", "items": { "type": "integer", "flow": { "index": 0 } } }
+            }
+          },
+          "outputs": {
+            "title": "Output",
+            "type": "object",
+            "flow": { "index": 0 },
+            "properties": { "sum": { "type": "integer", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" },
+          "localVariables": {
+            "type": "object",
+            "properties": {
+              "item": { "type": "integer", "flow": { "index": 0 } },
+              "index": { "type": "integer", "flow": { "index": 1 } }
+            }
+          }
+        },
+        "data": {
+          "concurrency": { "type": "expression", "content": "1" },
+          "list": { "type": "expression", "content": "[1,2,3,4,5]" }
+        },
+        "blocks": [
+          {
+            "id": "variable_0a2ce585e32",
+            "type": "variable",
+            "definition": {
+              "info": {
+                "title": "variable",
+                "description": "You can declare and set variables here",
+                "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+              },
+              "inputs": {
+                "type": "object",
+                "properties": {
+                  "setVariables": {
+                    "type": "object",
+                    "properties": {
+                      "0": {
+                        "type": "object",
+                        "properties": {
+                          "left": { "type": "integer" },
+                          "operator": { "type": "string" },
+                          "right": { "type": "integer" }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "outputs": { "properties": {}, "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "data": {
+              "setVariables": {
+                "0": {
+                  "left": { "type": "ref", "content": "$.batch.outputs.sum" },
+                  "right": {
+                    "type": "expression",
+                    "content": "batch.outputs.sum + batch.localVariables.item"
+                  },
+                  "operator": "assign"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "res": { "type": "integer", "flow": { "index": 1 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "res": { "type": "expression", "content": "batch.outputs.sum" } }
+      }
+    ],
+    "groups": [],
+    "setting": {
+      "errorHandler": "\"\"\"\n当流程中的某个节点抛出异常时调用的处理函数，可用的变量如下：\n\nobserve: 用于观察或监控流程执行的对象，可以observe.node_id/observe.node_path等获取对应的节点信息\n\nflow_outputs: 整个流程的输出数据，可以设置其中的值\n\nnode_outputs: 抛出异常的具体节点的输出数据，可以设置其中的值\n\nexception: 捕获到的异常对象\n\n常用行为：\n1. 如果这个handler内部不raise异常出去，相当于流程继续执行\n2. 如果这个handler里面raise exception出去，流程运行结束，返回上层\n3. 这里可以设置node_outputs\n\n\"\"\"\nraise exception"
+    }
+  }
+}

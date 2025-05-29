@@ -1,0 +1,7 @@
+/* #jsonEditor {
+  height: 500px;
+} */
+
+#jsonEditor .CodeMirror {
+  height: 100%;
+}

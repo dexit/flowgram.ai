@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate Condition - min 1`] = `
+"  //=== loop@forloop | {level:1,blockIndex:0}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    index: 0,
+  }
+  for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+  } // loop@forloop
+  "
+`;
+
+exports[`translate Forloop - basic 1`] = `
+"  //=== loop@forloop | {level:1,blockIndex:0}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    index: 0,
+  }
+  for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+    //=== assign@variable | {level:2,blockIndex:0,parent:'loop'}
+    const assign = {}
+    assign.outputs = {}
+    start.outputs.init = start.outputs.init + loop.localVariables.index
+    } // loop@forloop
+  "
+`;
+
+exports[`translate Forloop - break 1`] = `
+"  //=== loop@forloop | {level:1,blockIndex:0}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    index: 0,
+  }
+  for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+    //=== Break@break | {level:2,blockIndex:0,parent:'loop'}
+    break
+    } // loop@forloop
+  "
+`;
+
+exports[`translate Forloop - multi initilizers 1`] = `
+"  //=== loop@forloop | {level:1,blockIndex:0}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    left: 0,
+    right: 0,
+  }
+  for (loop.localVariables.left = 1,loop.localVariables.right = 10; loop.localVariables.left <= loop.localVariables.right; loop.localVariables.left += 1, loop.localVariables.right -= 1) {
+  } // loop@forloop
+  "
+`;
+
+exports[`translate Forloop - nest 1`] = `
+"  //=== loop@forloop | {level:1,blockIndex:0}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    index: 0,
+  }
+  for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+    //=== loop@forloop | {level:2,blockIndex:0,parent:'loop'}
+    const loop = {}
+    loop.outputs = {}
+    loop.localVariables = {
+      index: 0,
+    }
+    for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+      //=== loop@forloop | {level:3,blockIndex:0,parent:'loop'}
+      const loop = {}
+      loop.outputs = {}
+      loop.localVariables = {
+        index: 0,
+      }
+      for (loop.localVariables.index = 1; loop.localVariables.index <= 3; loop.localVariables.index += 1) {
+      } // loop@forloop
+      } // loop@forloop
+    } // loop@forloop
+  "
+`;

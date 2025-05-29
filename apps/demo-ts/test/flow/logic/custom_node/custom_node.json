@@ -1,0 +1,97 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "418099439362",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "script_755b5af296d",
+        "type": "script",
+        "definition": {
+          "info": {
+            "title": "adder",
+            "description": "This is a script node, you can edit this node as you want",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+          },
+          "inputs": {
+            "properties": {
+              "a": { "title": "Name", "type": "number", "flow": { "index": 0 } },
+              "b": { "type": "number", "flow": { "index": 1 } }
+            },
+            "type": "object",
+            "flow": { "editable": false }
+          },
+          "systemInputs": {
+            "type": "object",
+            "properties": {
+              "resourceUri": {
+                "type": "string",
+                "default": "blockwise:///team/0/project/96768002306/custom_node/186316804354/"
+              },
+              "nodeType": { "type": "string", "default": "custom_node" }
+            }
+          },
+          "outputs": {
+            "type": "object",
+            "flow": { "index": 0 },
+            "properties": {
+              "output": { "title": "Output", "type": "number", "flow": { "index": 0 } }
+            },
+            "title": "Output"
+          },
+          "script": {
+            "language": "python",
+            "content": "outputs.output = inputs.a + inputs.b",
+            "mode": "default",
+            "uri": ""
+          }
+        },
+        "data": {
+          "a": { "type": "expression", "content": "1" },
+          "b": { "type": "expression", "content": "2" }
+        }
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "result": { "type": "string", "flow": { "index": 1 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "result": { "type": "expression", "content": "adder.outputs.output" } }
+      }
+    ],
+    "groups": [],
+    "setting": {
+      "errorHandler": "\"\"\"\n当流程中的某个节点抛出异常时调用的处理函数，可用的变量如下：\n\nobserve: 用于观察或监控流程执行的对象，可以 observe.node_id/observe.node_path 等获取对应的节点信息\n\nflow_outputs: 整个流程的输出数据，可以设置其中的值\n\nnode_outputs: 抛出异常的具体节点的输出数据，可以设置其中的值\n\nexception: 捕获到的异常对象\n\n常用行为：\n1. 如果这个 handler 内部不 raise 异常出去，相当于流程继续执行\n2. 如果这个 handler 里面 raise exception 出去，流程运行结束，返回上层\n3. 这里可以设置 node_outputs\n\n\"\"\"\nraise exception"
+    }
+  }
+}

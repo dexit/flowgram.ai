@@ -1,0 +1,84 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "120576001794",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": {
+            "type": "object",
+            "title": "Output",
+            "properties": {
+              "nums": {
+                "type": "array",
+                "items": { "type": "number" },
+                "default": { "type": "expression", "content": "[3,2,1]" }
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "script_ceccec48092",
+        "type": "script",
+        "definition": {
+          "info": {
+            "title": "script",
+            "description": "This is a script node, you can edit this node as you want",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+          },
+          "inputs": {
+            "properties": {
+              "nums": { "title": "Name", "type": "array", "items": { "type": "number" } }
+            },
+            "type": "object"
+          },
+          "outputs": {
+            "properties": {
+              "output": { "title": "Output", "type": "number", "flow": { "index": 0 } }
+            },
+            "title": "Output",
+            "type": "object",
+            "flow": { "index": 0 }
+          },
+          "script": {
+            "language": "python",
+            "content": "function insertionSort(arr) {\n    for (let i = 1; i < arr.length; i++) {\n        let key = arr[i];\n        let j = i - 1;\n\n        // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j = j - 1;\n        }\n        arr[j + 1] = key;\n    }\n    return arr;\n}; insertionSort(inputs.nums)",
+            "mode": "default"
+          }
+        },
+        "data": {
+          "nums": { "type": "expression", "content": "start.outputs.nums" }
+        }
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": { "result": { "type": "number", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "nums": { "type": "expression", "content": "start.outputs.nums" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

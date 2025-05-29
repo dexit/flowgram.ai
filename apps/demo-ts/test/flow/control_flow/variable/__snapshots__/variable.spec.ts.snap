@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flow variable_basic | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: 'hi',
+  }
+  Object.assign(start.outputs, __args)
+  //=== variable@variable | {level:1,blockIndex:1}
+  const variable = {}
+  variable.outputs = {
+    a: '',
+  }
+  variable.outputs.a = start.outputs.query
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    data: variable.outputs.a,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow variable_basic | {} 2`] = `
+{
+  "data": "hi",
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+}
+`;
+
+exports[`flow variable_condition_2 | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: '',
+  }
+  Object.assign(start.outputs, __args)
+  //=== variable@variable | {level:1,blockIndex:1}
+  const variable = {}
+  variable.outputs = {
+    a: '',
+  }
+  start.outputs.query = 'hi'
+  variable.outputs.a = start.outputs.query
+  //=== condition@condition | {level:1,blockIndex:2}
+  const condition = {}
+  condition.outputs = {}
+  //=== case_hello@case | {level:1,blockIndex:0,parent:'condition'}
+  if (variable.outputs.a == 'hello') {
+    //=== variable_1@variable | {level:2,blockIndex:0,parent:'case_hello'}
+    const variable_1 = {}
+    variable_1.outputs = {}
+    variable.outputs.a = 'hello world'
+  } // case_hello@case
+  //=== case_default@default | {level:1,blockIndex:1,parent:'condition'}
+  else {
+  } // case_default@default
+  //=== End@end | {level:1,blockIndex:3}
+  const End = {}
+  End.data = {
+    result: variable.outputs.a,
+  }
+  return End.data
+}
+"
+`;
+
+exports[`flow variable_condition_2 | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "result": "hi",
+}
+`;

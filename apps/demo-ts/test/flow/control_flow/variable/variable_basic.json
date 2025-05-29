@@ -1,0 +1,89 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "102297605634",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": {
+            "type": "object",
+            "title": "Output",
+            "properties": { "query": { "type": "string", "flow": { "index": 0 }, "default": "hi" } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "variable_dd605e4e286",
+        "type": "variable",
+        "definition": {
+          "info": {
+            "title": "variable",
+            "description": "Youcandeclareandsetvariableshere",
+            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "setVariables": {
+                "type": "object",
+                "properties": {
+                  "0": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "string" },
+                      "operator": { "type": "string" },
+                      "right": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "outputs": {
+            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+            "title": "Output",
+            "type": "object"
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {
+          "setVariables": {
+            "0": {
+              "left": { "type": "ref", "content": "@.a" },
+              "right": { "type": "expression", "content": "start.outputs.query" },
+              "operator": "assign"
+            }
+          }
+        }
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": { "data": { "type": "string", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "data": { "type": "expression", "content": "variable.outputs.a" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

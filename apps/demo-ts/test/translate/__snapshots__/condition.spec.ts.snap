@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate Condition - case(condition(condition))/default(condition) 1`] = `
+"  //=== condition@condition | {level:1,blockIndex:0}
+  const condition = {}
+  condition.outputs = {}
+  //=== case_hello@case | {level:1,blockIndex:0,parent:'condition'}
+  if (variable.outputs.a == 'hello') {
+    //=== condition@condition | {level:2,blockIndex:0,parent:'case_hello'}
+    const condition = {}
+    condition.outputs = {}
+    //=== case_hello@case | {level:2,blockIndex:0,parent:'condition'}
+    if (variable.outputs.a == 'hello') {
+    } // case_hello@case
+    //=== case_hello1@case | {level:2,blockIndex:1,parent:'condition'}
+    else if (variable.outputs.a == 'hello1') {
+    } // case_hello1@case
+    //=== case_default@default | {level:2,blockIndex:2,parent:'condition'}
+    else {
+    } // case_default@default
+    } // case_hello@case
+  //=== case_hello1@case | {level:1,blockIndex:1,parent:'condition'}
+  else if (variable.outputs.a == 'hello1') {
+    //=== condition@condition | {level:2,blockIndex:0,parent:'case_hello1'}
+    const condition = {}
+    condition.outputs = {}
+    //=== case_hello@case | {level:2,blockIndex:0,parent:'condition'}
+    if (variable.outputs.a == 'hello') {
+    } // case_hello@case
+    //=== case_hello1@case | {level:2,blockIndex:1,parent:'condition'}
+    else if (variable.outputs.a == 'hello1') {
+    } // case_hello1@case
+    //=== case_default@default | {level:2,blockIndex:2,parent:'condition'}
+    else {
+    } // case_default@default
+    } // case_hello1@case
+  //=== case_default@default | {level:1,blockIndex:2,parent:'condition'}
+  else {
+    //=== condition@condition | {level:2,blockIndex:0,parent:'case_default'}
+    const condition = {}
+    condition.outputs = {}
+    //=== case_hello@case | {level:2,blockIndex:0,parent:'condition'}
+    if (variable.outputs.a == 'hello') {
+    } // case_hello@case
+    //=== case_hello1@case | {level:2,blockIndex:1,parent:'condition'}
+    else if (variable.outputs.a == 'hello1') {
+    } // case_hello1@case
+    //=== case_default@default | {level:2,blockIndex:2,parent:'condition'}
+    else {
+    } // case_default@default
+    } // case_default@default
+  "
+`;
+
+exports[`translate Condition - case/case/default 1`] = `
+"  //=== condition@condition | {level:1,blockIndex:0}
+  const condition = {}
+  condition.outputs = {}
+  //=== case_hello@case | {level:1,blockIndex:0,parent:'condition'}
+  if (variable.outputs.a == 'hello') {
+    //=== variable_1@variable | {level:2,blockIndex:0,parent:'case_hello'}
+    const variable_1 = {}
+    variable_1.outputs = {}
+    variable.outputs.a = 'hello world'
+    } // case_hello@case
+  //=== case_hello1@case | {level:1,blockIndex:1,parent:'condition'}
+  else if (variable.outputs.a == 'hello1') {
+    //=== variable_1@variable | {level:2,blockIndex:0,parent:'case_hello1'}
+    const variable_1 = {}
+    variable_1.outputs = {}
+    variable.outputs.a = 'hello world'
+    } // case_hello1@case
+  //=== case_default@default | {level:1,blockIndex:2,parent:'condition'}
+  else {
+    //=== variable_2@variable | {level:2,blockIndex:0,parent:'case_default'}
+    const variable_2 = {}
+    variable_2.outputs = {
+      a: '',
+    }
+    variable_2.outputs.a = start.outputs.query
+    } // case_default@default
+  "
+`;
+
+exports[`translate Condition - min 1`] = `
+"  //=== condition@condition | {level:1,blockIndex:0}
+  const condition = {}
+  condition.outputs = {}
+  //=== case_hello@case | {level:1,blockIndex:0,parent:'condition'}
+  if (variable.outputs.a == 'hello') {
+  } // case_hello@case
+  //=== case_hello1@case | {level:1,blockIndex:1,parent:'condition'}
+  else if (variable.outputs.a == 'hello1') {
+  } // case_hello1@case
+  //=== case_default@default | {level:1,blockIndex:2,parent:'condition'}
+  else {
+  } // case_default@default
+  "
+`;

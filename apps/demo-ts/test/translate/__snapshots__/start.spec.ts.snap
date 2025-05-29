@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate Start - 0 param 1`] = `
+"  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  "
+`;
+
+exports[`translate Start - 1 param 1`] = `
+"  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: 'Hello BlockWise',
+  }
+  Object.assign(start.outputs, __args)
+  "
+`;
+
+exports[`translate Start - more params 1`] = `
+"  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    v_string: '',
+    v_integer: 0,
+    v_number: 0,
+    v_boolean: false,
+    v_array: [],
+    v_object: {
+      a: '',
+    },
+    v_map: {},
+  }
+  Object.assign(start.outputs, __args)
+  "
+`;

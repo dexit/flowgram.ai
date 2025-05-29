@@ -1,0 +1,28 @@
+export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== script_adder@callflow | {level:1,blockIndex:1}
+  const script_adder = {}
+  script_adder.outputs = {
+    result: 0,
+  }
+  script_adder.data = {
+    projectId: '96768002306',
+    teamId: '0',
+    a: 3.0,
+    b: 4.0,
+  }
+  script_adder.outputs = await (
+    await import(
+      '/Users/bytedance/Documents/byte-proj/bwts/test/flow/logic/script/script_adder.flow'
+    )
+  )?.__main(script_adder.data)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    result: script_adder.outputs.result,
+  }
+  return end.data
+}

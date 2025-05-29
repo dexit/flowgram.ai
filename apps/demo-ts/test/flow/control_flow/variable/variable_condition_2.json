@@ -1,0 +1,189 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "214963215362",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": {
+            "type": "object",
+            "title": "Output",
+            "properties": {
+              "query": { "type": "string", "title": "Query", "flow": { "index": 0 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "variable_33f64e0c461",
+        "type": "variable",
+        "definition": {
+          "info": {
+            "title": "variable",
+            "description": "Youcandeclareandsetvariableshere",
+            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "setVariables": {
+                "type": "object",
+                "properties": {
+                  "0": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "string" },
+                      "operator": { "type": "string" },
+                      "right": { "type": "string" }
+                    }
+                  },
+                  "1": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "string" },
+                      "operator": { "type": "string" },
+                      "right": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "outputs": {
+            "properties": { "a": { "type": "string" } },
+            "title": "Output",
+            "type": "object"
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {
+          "setVariables": {
+            "0": {
+              "left": { "type": "ref", "content": "$.start.outputs.query" },
+              "right": { "type": "expression", "content": "'hi'" },
+              "operator": "assign"
+            },
+            "1": {
+              "left": { "type": "ref", "content": "@.a" },
+              "right": { "type": "expression", "content": "start.outputs.query" },
+              "operator": "assign"
+            }
+          }
+        }
+      },
+      {
+        "id": "condition_4e0c4615094",
+        "type": "condition",
+        "definition": {
+          "info": {
+            "title": "condition",
+            "description": "Select branches to execute based on conditions",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/conditio_icon.svg"
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "blocks": [
+          {
+            "id": "branch_f7fdf2437b3",
+            "type": "case",
+            "definition": {
+              "info": {
+                "title": "case_hello",
+                "description": "Execute the branch when the condition is met",
+                "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Condition.png"
+              },
+              "inputs": { "type": "object", "properties": { "condition": { "type": "boolean" } } },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "data": {
+              "condition": { "type": "expression", "content": "variable.outputs.a == 'hello'" }
+            },
+            "blocks": [
+              {
+                "id": "variable_e0c4615094f",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "variable_1",
+                    "description": "Youcandeclareandsetvariableshere",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "$.variable.outputs.a" },
+                      "right": { "type": "expression", "content": "'hello world'" },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "default_64e0c461509",
+            "type": "default",
+            "definition": {
+              "info": {
+                "title": "case_default",
+                "description": "Executed when all conditions are not met",
+                "icon": ""
+              },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": []
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "End",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": { "result": { "type": "string", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "result": { "type": "expression", "content": "variable.outputs.a" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate Script - basic 1`] = `
+"  //=== script_1@script | {level:1,blockIndex:0}
+  const script_1 = {}
+  script_1.outputs = {
+    output: '',
+  }
+  script_1.data = {
+  }
+  const __func_script_1 = (inputs, outputs) => {
+  outputs.output = inputs.name
+  }
+  __func_script_1(script_1.data, script_1.outputs)
+  "
+`;
+
+exports[`translate Script - complex 1`] = `
+"  //=== script_1@script | {level:1,blockIndex:0}
+  const script_1 = {}
+  script_1.outputs = {
+    output: '',
+  }
+  script_1.data = {
+  }
+  const __func_script_1 = (inputs, outputs) => {
+  function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+      let key = arr[i];
+      let j = i - 1;
+  
+      // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+      while (j >= 0 && arr[j] > key) {
+          arr[j + 1] = arr[j];
+          j = j - 1;
+      }
+      arr[j + 1] = key;
+  }
+  return arr;
+  }
+  }
+  __func_script_1(script_1.data, script_1.outputs)
+  "
+`;
+
+exports[`translate Script - empty 1`] = `
+"  //=== script_1@script | {level:1,blockIndex:0}
+  const script_1 = {}
+  script_1.outputs = {
+    output: '',
+  }
+  script_1.data = {
+  }
+  const __func_script_1 = (inputs, outputs) => {
+  
+  }
+  __func_script_1(script_1.data, script_1.outputs)
+  "
+`;

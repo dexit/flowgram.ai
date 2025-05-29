@@ -1,0 +1,56 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "115200013570",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": {
+            "type": "object",
+            "title": "Output",
+            "properties": {
+              "query": {
+                "type": "string",
+                "title": "Query",
+                "flow": { "index": 0 },
+                "default": "Hello BlockWise"
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "data": { "type": "string", "flow": { "index": 0 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {
+          "data": { "type": "expression", "content": "start.outputs.query" }
+        }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

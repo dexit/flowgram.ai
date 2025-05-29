@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flow loop | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    init: 0,
+  }
+  Object.assign(start.outputs, __args)
+  //=== loop@forloop | {level:1,blockIndex:1}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    index: 0,
+  }
+  for (
+    loop.localVariables.index = 1;
+    loop.localVariables.index <= 3;
+    loop.localVariables.index += 1
+  ) {
+    //=== assign@variable | {level:2,blockIndex:0,parent:'loop'}
+    const assign = {}
+    assign.outputs = {}
+    start.outputs.init = start.outputs.init + loop.localVariables.index
+  } // loop@forloop
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    sum: start.outputs.init,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow loop | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "sum": 6,
+}
+`;
+
+exports[`flow loop_break | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== variable@variable | {level:1,blockIndex:1}
+  const variable = {}
+  variable.outputs = {
+    nums: [],
+    result: 0,
+  }
+  variable.outputs.nums = [1, 2, 3, 4, 5]
+  variable.outputs.result = 0
+  //=== loop@forloop | {level:1,blockIndex:2}
+  const loop = {}
+  loop.outputs = {}
+  loop.localVariables = {
+    i: 0,
+    item: 0,
+  }
+  for (
+    loop.localVariables.i = 0, loop.localVariables.item = 0;
+    loop.localVariables.i < variable.outputs.nums.length;
+    loop.localVariables.i += 1
+  ) {
+    //=== assign@variable | {level:2,blockIndex:0,parent:'loop'}
+    const assign = {}
+    assign.outputs = {}
+    variable.outputs.result = variable.outputs.nums[loop.localVariables.i]
+    //=== condition@condition | {level:2,blockIndex:1,parent:'loop'}
+    const condition = {}
+    condition.outputs = {}
+    //=== case_1@case | {level:2,blockIndex:0,parent:'condition'}
+    if (variable.outputs.nums[loop.localVariables.i] >= 3) {
+      //=== Break@break | {level:3,blockIndex:0,parent:'case_1'}
+      break
+    } // case_1@case
+    //=== case_default@default | {level:2,blockIndex:1,parent:'condition'}
+    else {
+    } // case_default@default
+  } // loop@forloop
+  //=== end@end | {level:1,blockIndex:3}
+  const end = {}
+  end.data = {
+    result: variable.outputs.result,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow loop_break | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "result": 3,
+}
+`;
+
+exports[`flow loop_nest | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== v@variable | {level:1,blockIndex:1}
+  const v = {}
+  v.outputs = {
+    array0: [],
+    array1: [],
+    ret: '',
+  }
+  v.outputs.array0 = [1, 2]
+  v.outputs.array1 = [3, 4]
+  v.outputs.ret = ''
+  //=== loop_0@forloop | {level:1,blockIndex:2}
+  const loop_0 = {}
+  loop_0.outputs = {}
+  loop_0.localVariables = {
+    i: 0,
+  }
+  for (
+    loop_0.localVariables.i = 0;
+    loop_0.localVariables.i < v.outputs.array0.length;
+    loop_0.localVariables.i += 1
+  ) {
+    //=== loop_1@forloop | {level:2,blockIndex:0,parent:'loop_0'}
+    const loop_1 = {}
+    loop_1.outputs = {}
+    loop_1.localVariables = {
+      j: 0,
+    }
+    for (
+      loop_1.localVariables.j = 0;
+      loop_1.localVariables.j < v.outputs.array1.length;
+      loop_1.localVariables.j += 1
+    ) {
+      //=== join@variable | {level:3,blockIndex:0,parent:'loop_1'}
+      const join = {}
+      join.outputs = {}
+      v.outputs.ret =
+        v.outputs.ret +
+        \`\${v.outputs.array0[loop_0.localVariables.i]}-\${v.outputs.array1[loop_1.localVariables.j]} \`
+    } // loop_1@forloop
+  } // loop_0@forloop
+  //=== end@end | {level:1,blockIndex:3}
+  const end = {}
+  end.data = {
+    ret: v.outputs.ret,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow loop_nest | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "ret": "1-3 1-4 2-3 2-4 ",
+}
+`;
+
+exports[`flow loop_ouputs | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== loop@forloop | {level:1,blockIndex:1}
+  const loop = {}
+  loop.outputs = {
+    sum: 0,
+  }
+  loop.localVariables = {
+    i: 0,
+  }
+  for (
+    loop.localVariables.i = 0;
+    loop.localVariables.i < 10;
+    loop.localVariables.i = loop.localVariables.i + 1
+  ) {
+    //=== variable@variable | {level:2,blockIndex:0,parent:'loop'}
+    const variable = {}
+    variable.outputs = {}
+    loop.outputs.sum = loop.outputs.sum + loop.localVariables.i
+  } // loop@forloop
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    sum: loop.outputs.sum,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow loop_ouputs | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "sum": 45,
+}
+`;
+
+exports[`flow loop_while | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== while_0@forloop | {level:1,blockIndex:1}
+  const while_0 = {}
+  while_0.outputs = {}
+  while_0.localVariables = {
+    finished: false,
+  }
+  for (while_0.localVariables.finished = false; !while_0.localVariables.finished; '') {
+    //=== assign@variable | {level:2,blockIndex:0,parent:'while_0'}
+    const assign = {}
+    assign.outputs = {}
+    while_0.localVariables.finished = true
+  } // while_0@forloop
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {}
+  return end.data
+}
+"
+`;
+
+exports[`flow loop_while | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+}
+`;

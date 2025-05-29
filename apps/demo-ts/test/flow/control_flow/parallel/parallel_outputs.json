@@ -1,0 +1,446 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "232012823810",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "parallel_d0231fd48fc",
+        "type": "parallel",
+        "definition": {
+          "info": {
+            "title": "parallel",
+            "description": "Execute multiple branches simultaneously",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+          },
+          "outputs": {
+            "type": "object",
+            "properties": {
+              "branch_0": {
+                "type": "object",
+                "properties": {
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  }
+                }
+              },
+              "branch_1": {
+                "type": "object",
+                "properties": {
+                  "outputs": {
+                    "type": "object",
+                    "properties": {
+                      "parallel_2_branch_0": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "parallel_2_branch_1": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "blocks": [
+          {
+            "id": "block_8bd0231fd48",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_0", "description": "", "icon": "" },
+              "outputs": {
+                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                "title": "Output",
+                "type": "object"
+              },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "variable_0231fd48fcd",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "v_0",
+                    "description": "You can declare and set variables here",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "@.a" },
+                      "right": { "type": "expression", "content": "\"1\"" },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "block_bd0231fd48f",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_1", "description": "", "icon": "" },
+              "outputs": {
+                "type": "object",
+                "properties": {
+                  "parallel_2_branch_0": {
+                    "type": "object",
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "parallel_2_branch_1": {
+                    "type": "object",
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "variable_31fd48fcd27",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "v_1",
+                    "description": "You can declare and set variables here",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "@.a" },
+                      "right": { "type": "expression", "content": "\"2\"" },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "parallel_6ed045cd8b1",
+                "type": "parallel",
+                "definition": {
+                  "info": {
+                    "title": "parallel_2",
+                    "description": "Execute multiple branches simultaneously",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+                  },
+                  "outputs": {
+                    "type": "object",
+                    "properties": {
+                      "parallel_2_branch_0": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "parallel_2_branch_1": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "blocks": [
+                  {
+                    "id": "block_68f6ed045cd",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_2_branch_0", "description": "", "icon": "" },
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "variable_068f6ed045c",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "v2",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": {
+                              "setVariables": {
+                                "type": "object",
+                                "properties": {
+                                  "0": {
+                                    "type": "object",
+                                    "properties": {
+                                      "left": { "type": "string" },
+                                      "operator": { "type": "string" },
+                                      "right": { "type": "string" }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": {
+                          "setVariables": {
+                            "0": {
+                              "left": { "type": "ref", "content": "@.a" },
+                              "right": { "type": "expression", "content": "\"3\"" },
+                              "operator": "assign"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "block_f6ed045cd8b",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_2_branch_1", "description": "", "icon": "" },
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "variable_8f6ed045cd8",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "v3",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": {
+                              "setVariables": {
+                                "type": "object",
+                                "properties": {
+                                  "0": {
+                                    "type": "object",
+                                    "properties": {
+                                      "left": { "type": "string" },
+                                      "operator": { "type": "string" },
+                                      "right": { "type": "string" }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": {
+                          "setVariables": {
+                            "0": {
+                              "left": { "type": "ref", "content": "@.a" },
+                              "right": { "type": "expression", "content": "\"4\"" },
+                              "operator": "assign"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "res": {
+                "properties": {
+                  "branch_0": {
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "branch_1": {
+                    "properties": {
+                      "outputs": {
+                        "properties": {
+                          "parallel_2_branch_0": {
+                            "properties": {
+                              "outputs": {
+                                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                                "title": "Output",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "parallel_2_branch_1": {
+                            "properties": {
+                              "outputs": {
+                                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                                "title": "Output",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "res": { "type": "expression", "content": "parallel.outputs" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

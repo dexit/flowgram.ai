@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flow min | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {}
+  Object.assign(start.outputs, __args)
+  //=== end@end | {level:1,blockIndex:1}
+  const end = {}
+  end.data = {}
+  return end.data
+}
+"
+`;
+
+exports[`flow min | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+}
+`;
+
+exports[`flow min11 | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: 'Hello BlockWise',
+  }
+  Object.assign(start.outputs, __args)
+  //=== end@end | {level:1,blockIndex:1}
+  const end = {}
+  end.data = {
+    data: start.outputs.query,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow min11 | {} 2`] = `
+{
+  "data": "Hello BlockWise",
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+}
+`;
+
+exports[`flow min22 | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: 'Hello BlockWise',
+    limit: 5,
+  }
+  Object.assign(start.outputs, __args)
+  //=== end@end | {level:1,blockIndex:1}
+  const end = {}
+  end.data = {
+    data: start.outputs.query,
+    limit: start.outputs.limit,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow min22 | {} 2`] = `
+{
+  "data": "Hello BlockWise",
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "limit": 5,
+}
+`;

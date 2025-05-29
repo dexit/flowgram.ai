@@ -1,0 +1,135 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "212659246082",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": {
+            "type": "object",
+            "title": "Output",
+            "properties": {
+              "nums": {
+                "type": "array",
+                "items": { "type": "number" },
+                "default": { "type": "expression", "content": "[1,2,3]" }
+              },
+              "sum": { "type": "number", "default": 0, "flow": { "index": 1 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "batch_6805779df6e",
+        "type": "batch",
+        "definition": {
+          "info": {
+            "title": "batch",
+            "description": "ForEach",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/loop_icon.svg"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "concurrency": { "type": "number" },
+              "list": { "type": "array", "items": { "type": "number", "flow": { "index": 0 } } }
+            }
+          },
+          "outputs": { "title": "Output", "type": "object" },
+          "script": { "language": "python", "content": "", "mode": "default" },
+          "localVariables": {
+            "type": "object",
+            "properties": {
+              "item": { "type": "number", "flow": { "index": 0 } },
+              "index": { "type": "integer", "flow": { "index": 1 } }
+            }
+          }
+        },
+        "data": {
+          "concurrency": { "type": "expression", "content": "3" },
+          "list": { "type": "expression", "content": "start.outputs.nums" }
+        },
+        "blocks": [
+          {
+            "id": "variable_24166c861a6",
+            "type": "variable",
+            "definition": {
+              "info": {
+                "title": "assign_sum",
+                "description": "You can declare and set variables here",
+                "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+              },
+              "inputs": {
+                "type": "object",
+                "properties": {
+                  "setVariables": {
+                    "type": "object",
+                    "properties": {
+                      "0": {
+                        "type": "object",
+                        "properties": {
+                          "left": { "type": "number" },
+                          "operator": { "type": "string" },
+                          "right": { "type": "number" }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "outputs": { "properties": {}, "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "data": {
+              "setVariables": {
+                "0": {
+                  "left": { "type": "ref", "content": "$.start.outputs.sum" },
+                  "right": {
+                    "type": "expression",
+                    "content": "start.outputs.sum + batch.localVariables.item"
+                  },
+                  "operator": "assign"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "sum": { "type": "number", "flow": { "index": 1 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "sum": { "type": "expression", "content": "start.outputs.sum" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

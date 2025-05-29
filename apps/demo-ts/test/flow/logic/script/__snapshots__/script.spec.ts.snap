@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flow script_adder | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    a: 1,
+    b: 2,
+  }
+  Object.assign(start.outputs, __args)
+  //=== script@script | {level:1,blockIndex:1}
+  const script = {}
+  script.outputs = {
+    output: 0,
+  }
+  script.data = {
+    a: start.outputs.a,
+    b: start.outputs.b,
+  }
+  const __func_script = (inputs, outputs) => {
+    outputs.output = inputs.a + inputs.b
+  }
+  __func_script(script.data, script.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    result: script.outputs.output,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_adder | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "result": 3,
+}
+`;
+
+exports[`flow script_adder | {a:-1,b:1} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    a: 1,
+    b: 2,
+  }
+  Object.assign(start.outputs, __args)
+  //=== script@script | {level:1,blockIndex:1}
+  const script = {}
+  script.outputs = {
+    output: 0,
+  }
+  script.data = {
+    a: start.outputs.a,
+    b: start.outputs.b,
+  }
+  const __func_script = (inputs, outputs) => {
+    outputs.output = inputs.a + inputs.b
+  }
+  __func_script(script.data, script.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    result: script.outputs.output,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_adder | {a:-1,b:1} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "result": 0,
+}
+`;
+
+exports[`flow script_join | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    query: 'hello',
+  }
+  Object.assign(start.outputs, __args)
+  //=== script_join@script | {level:1,blockIndex:1}
+  const script_join = {}
+  script_join.outputs = {
+    output: '',
+  }
+  script_join.data = {
+    a: start.outputs.query,
+    b: ' world',
+  }
+  const __func_script_join = (inputs, outputs) => {
+    outputs.output = inputs.a + inputs.b
+  }
+  __func_script_join(script_join.data, script_join.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    result: script_join.outputs.output,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_join | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "result": "hello world",
+}
+`;
+
+exports[`flow script_sort | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    nums: [3, 2, 1],
+  }
+  Object.assign(start.outputs, __args)
+  //=== script@script | {level:1,blockIndex:1}
+  const script = {}
+  script.outputs = {
+    output: 0,
+  }
+  script.data = {
+    nums: start.outputs.nums,
+  }
+  const __func_script = (inputs, outputs) => {
+    function insertionSort(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]
+        let j = i - 1
+
+        // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+          arr[j + 1] = arr[j]
+          j = j - 1
+        }
+        arr[j + 1] = key
+      }
+      return arr
+    }
+    insertionSort(inputs.nums)
+  }
+  __func_script(script.data, script.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    nums: start.outputs.nums,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_sort | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "nums": [
+    1,
+    2,
+    3,
+  ],
+}
+`;
+
+exports[`flow script_sort | {nums:[1,2,3]} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    nums: [3, 2, 1],
+  }
+  Object.assign(start.outputs, __args)
+  //=== script@script | {level:1,blockIndex:1}
+  const script = {}
+  script.outputs = {
+    output: 0,
+  }
+  script.data = {
+    nums: start.outputs.nums,
+  }
+  const __func_script = (inputs, outputs) => {
+    function insertionSort(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]
+        let j = i - 1
+
+        // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+          arr[j + 1] = arr[j]
+          j = j - 1
+        }
+        arr[j + 1] = key
+      }
+      return arr
+    }
+    insertionSort(inputs.nums)
+  }
+  __func_script(script.data, script.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    nums: start.outputs.nums,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_sort | {nums:[1,2,3]} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "nums": [
+    1,
+    2,
+    3,
+  ],
+}
+`;
+
+exports[`flow script_sort | {nums:[4,2,2,3,1,1,3]} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    nums: [3, 2, 1],
+  }
+  Object.assign(start.outputs, __args)
+  //=== script@script | {level:1,blockIndex:1}
+  const script = {}
+  script.outputs = {
+    output: 0,
+  }
+  script.data = {
+    nums: start.outputs.nums,
+  }
+  const __func_script = (inputs, outputs) => {
+    function insertionSort(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]
+        let j = i - 1
+
+        // Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+          arr[j + 1] = arr[j]
+          j = j - 1
+        }
+        arr[j + 1] = key
+      }
+      return arr
+    }
+    insertionSort(inputs.nums)
+  }
+  __func_script(script.data, script.outputs)
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    nums: start.outputs.nums,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow script_sort | {nums:[4,2,2,3,1,1,3]} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "nums": [
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+  ],
+}
+`;

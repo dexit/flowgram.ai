@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flow condition_outputs | {} 1`] = `
+"export async function __main(__args) {
+  //=== start@start | {level:1,blockIndex:0}
+  const start = {}
+  start.outputs = {
+    score: 70,
+  }
+  Object.assign(start.outputs, __args)
+  //=== switch_mode@condition | {level:1,blockIndex:1}
+  const switch_mode = {}
+  switch_mode.outputs = {
+    rank: '',
+  }
+  //=== case_0@case | {level:1,blockIndex:0,parent:'switch_mode'}
+  if (start.outputs.score >= 90) {
+    //=== assign_0@variable | {level:2,blockIndex:0,parent:'case_0'}
+    const assign_0 = {}
+    assign_0.outputs = {}
+    switch_mode.outputs.rank = 'Excellent'
+  } // case_0@case
+  //=== case_1@case | {level:1,blockIndex:1,parent:'switch_mode'}
+  else if (start.outputs.score >= 60 && start.outputs.score < 90) {
+    //=== assign_1@variable | {level:2,blockIndex:0,parent:'case_1'}
+    const assign_1 = {}
+    assign_1.outputs = {}
+    switch_mode.outputs.rank = 'Normal'
+  } // case_1@case
+  //=== case_default@default | {level:1,blockIndex:2,parent:'switch_mode'}
+  else {
+    //=== assign_2@variable | {level:2,blockIndex:0,parent:'case_default'}
+    const assign_2 = {}
+    assign_2.outputs = {}
+    switch_mode.outputs.rank = 'Fail'
+  } // case_default@default
+  //=== end@end | {level:1,blockIndex:2}
+  const end = {}
+  end.data = {
+    rank: switch_mode.outputs.rank,
+  }
+  return end.data
+}
+"
+`;
+
+exports[`flow condition_outputs | {} 2`] = `
+{
+  "error": {
+    "code": "",
+    "msg": "",
+  },
+  "rank": "Normal",
+}
+`;

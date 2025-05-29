@@ -1,0 +1,97 @@
+:root {
+  --background: #1d1f21;
+  --current-line: #282a2e;
+  --selection: #373b41;
+  --foreground: #c5c8c6;
+  --comment: #969896;
+  --red: #cc6666;
+  --orange: #de935f;
+  --yellow: #f0c674;
+  --green: #b5bd68;
+  --aqua: #8abeb7;
+  --blue: #81a2be;
+  --purple: #b294bb;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 1.2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.header {
+  height: 4rem;
+  line-height: 4rem;
+  flex: 1;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.left {
+  flex: 1;
+  width: 50vw;
+}
+
+.right {
+  flex: 1;
+  width: 50vw;
+}
+
+#schemaEditor .CodeMirror {
+  height: 100vh;
+}
+
+#jsEditor .CodeMirror {
+  height: 50vh;
+}
+
+#resultEditor .CodeMirror {
+  height: calc(50vh - 3rem);
+}
+
+#opPanel {
+  height: 3rem;
+}
+
+#run {
+  width: 10rem;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: var(--foreground);
+  color: var(--background);
+  border: 0;
+}
+
+#recordName {
+  margin-left: 1rem;
+  width: 20rem;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 0.1rem;
+}
+
+#records {
+  margin-left: 20rem;
+  width: 20rem;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 0.1rem;
+}

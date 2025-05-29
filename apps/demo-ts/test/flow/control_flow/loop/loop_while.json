@@ -1,0 +1,123 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "233241647362",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "forloop_9554b698ffb",
+        "type": "forloop",
+        "definition": {
+          "info": {
+            "title": "while_0",
+            "description": "for( initializer; condition; step) {  } ",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Loop.svg"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "initializer": {
+                "type": "object",
+                "properties": { "finished": { "type": "boolean", "flow": { "index": 0 } } },
+                "flow": { "index": 0 }
+              },
+              "condition": { "type": "boolean", "flow": { "editable": false } },
+              "step": { "type": "string", "flow": { "editable": false } }
+            }
+          },
+          "outputs": { "title": "Output", "type": "object" },
+          "script": { "language": "python", "content": "", "mode": "default" },
+          "localVariables": {
+            "type": "object",
+            "properties": { "finished": { "type": "boolean", "flow": { "index": 0 } } }
+          }
+        },
+        "data": {
+          "initializer": { "finished": { "type": "expression", "content": "false" } },
+          "condition": { "type": "expression", "content": "!while_0.localVariables.finished " },
+          "step": { "type": "expression", "content": "''" }
+        },
+        "blocks": [
+          {
+            "id": "variable_ff3014f97f9",
+            "type": "variable",
+            "definition": {
+              "info": {
+                "title": "assign",
+                "description": "You can declare and set variables here",
+                "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+              },
+              "inputs": {
+                "type": "object",
+                "properties": {
+                  "setVariables": {
+                    "type": "object",
+                    "properties": {
+                      "0": {
+                        "type": "object",
+                        "properties": {
+                          "left": { "type": "boolean" },
+                          "operator": { "type": "string" },
+                          "right": { "type": "boolean" }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "outputs": { "properties": {}, "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "data": {
+              "setVariables": {
+                "0": {
+                  "left": { "type": "ref", "content": "$.while_0.localVariables.finished" },
+                  "right": { "type": "expression", "content": "true" },
+                  "operator": "assign"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

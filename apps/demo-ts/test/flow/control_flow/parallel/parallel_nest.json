@@ -1,0 +1,347 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "236083236098",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "parallel_bffd714bd00",
+        "type": "parallel",
+        "definition": {
+          "info": {
+            "title": "parallel_0",
+            "description": "Execute multiple branches simultaneously",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+          },
+          "outputs": { "type": "object", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "blocks": [
+          {
+            "id": "block_8bbffd714bd",
+            "type": "block",
+            "definition": {
+              "info": { "title": "parallel_0_branch_0", "description": "", "icon": "" },
+              "outputs": { "type": "object", "properties": {} },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "script_bd0033f732f",
+                "type": "script",
+                "definition": {
+                  "info": {
+                    "title": "script_0",
+                    "description": "This is a script node, you can edit this node as you want",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                  },
+                  "inputs": {
+                    "properties": { "name": { "title": "Name", "type": "string" } },
+                    "type": "object"
+                  },
+                  "outputs": {
+                    "properties": { "output": { "title": "Output", "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": {
+                    "language": "python",
+                    "content": "outputs.output = inputs.name",
+                    "mode": "default"
+                  }
+                },
+                "data": {}
+              }
+            ]
+          },
+          {
+            "id": "block_bbffd714bd0",
+            "type": "block",
+            "definition": {
+              "info": { "title": "parallel_0_branch_1", "description": "", "icon": "" },
+              "outputs": { "type": "object", "properties": {} },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "parallel_d714bd0033f",
+                "type": "parallel",
+                "definition": {
+                  "info": {
+                    "title": "parallel_1",
+                    "description": "Execute multiple branches simultaneously",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+                  },
+                  "outputs": { "type": "object", "properties": {} },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "blocks": [
+                  {
+                    "id": "block_ffd714bd003",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_1_branch_0", "description": "", "icon": "" },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "script_0033f732f85",
+                        "type": "script",
+                        "definition": {
+                          "info": {
+                            "title": "script_1",
+                            "description": "This is a script node, you can edit this node as you want",
+                            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                          },
+                          "inputs": {
+                            "properties": { "name": { "title": "Name", "type": "string" } },
+                            "type": "object"
+                          },
+                          "outputs": {
+                            "properties": { "output": { "title": "Output", "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": {
+                            "language": "python",
+                            "content": "outputs.output = inputs.name",
+                            "mode": "default"
+                          }
+                        },
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "id": "block_fd714bd0033",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_1_branch_1", "description": "", "icon": "" },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "parallel_4bd0033f732",
+                        "type": "parallel",
+                        "definition": {
+                          "info": {
+                            "title": "parallel_2",
+                            "description": "Execute multiple branches simultaneously",
+                            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+                          },
+                          "outputs": { "type": "object", "properties": {} },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "blocks": [
+                          {
+                            "id": "block_714bd0033f7",
+                            "type": "block",
+                            "definition": {
+                              "info": {
+                                "title": "parallel_2_branch_0",
+                                "description": "",
+                                "icon": ""
+                              },
+                              "script": { "language": "python", "content": "", "mode": "default" }
+                            },
+                            "blocks": [
+                              {
+                                "id": "script_3f732f85654",
+                                "type": "script",
+                                "definition": {
+                                  "info": {
+                                    "title": "script_3",
+                                    "description": "This is a script node, you can edit this node as you want",
+                                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                                  },
+                                  "inputs": {
+                                    "properties": { "name": { "title": "Name", "type": "string" } },
+                                    "type": "object"
+                                  },
+                                  "outputs": {
+                                    "properties": {
+                                      "output": { "title": "Output", "type": "string" }
+                                    },
+                                    "title": "Output",
+                                    "type": "object"
+                                  },
+                                  "script": {
+                                    "language": "python",
+                                    "content": "outputs.output = inputs.name",
+                                    "mode": "default"
+                                  }
+                                },
+                                "data": {}
+                              }
+                            ]
+                          },
+                          {
+                            "id": "block_14bd0033f73",
+                            "type": "block",
+                            "definition": {
+                              "info": {
+                                "title": "parallel_2_branch_1",
+                                "description": "",
+                                "icon": ""
+                              },
+                              "script": { "language": "python", "content": "", "mode": "default" }
+                            },
+                            "blocks": [
+                              {
+                                "id": "script_32f85654558",
+                                "type": "script",
+                                "definition": {
+                                  "info": {
+                                    "title": "script_4",
+                                    "description": "This is a script node, you can edit this node as you want",
+                                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                                  },
+                                  "inputs": {
+                                    "properties": { "name": { "title": "Name", "type": "string" } },
+                                    "type": "object"
+                                  },
+                                  "outputs": {
+                                    "properties": {
+                                      "output": { "title": "Output", "type": "string" }
+                                    },
+                                    "title": "Output",
+                                    "type": "object"
+                                  },
+                                  "script": {
+                                    "language": "python",
+                                    "content": "outputs.output = inputs.name",
+                                    "mode": "default"
+                                  }
+                                },
+                                "data": {}
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "script_8462e702ae2",
+                        "type": "script",
+                        "definition": {
+                          "info": {
+                            "title": "observer_1",
+                            "description": "This is a script node, you can edit this node as you want",
+                            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                          },
+                          "inputs": {
+                            "properties": { "name": { "title": "Name", "type": "string" } },
+                            "type": "object"
+                          },
+                          "outputs": {
+                            "properties": { "output": { "title": "Output", "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": {
+                            "language": "python",
+                            "content": "outputs.output = inputs.name",
+                            "mode": "default"
+                          }
+                        },
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "script_e98487cebe6",
+                "type": "script",
+                "definition": {
+                  "info": {
+                    "title": "observer_2",
+                    "description": "This is a script node, you can edit this node as you want",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+                  },
+                  "inputs": {
+                    "properties": { "name": { "title": "Name", "type": "string" } },
+                    "type": "object"
+                  },
+                  "outputs": {
+                    "properties": { "output": { "title": "Output", "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": {
+                    "language": "python",
+                    "content": "outputs.output = inputs.name",
+                    "mode": "default"
+                  }
+                },
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "script_30cd18388b2",
+        "type": "script",
+        "definition": {
+          "info": {
+            "title": "observer_3",
+            "description": "This is a script node, you can edit this node as you want",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png"
+          },
+          "inputs": {
+            "properties": { "name": { "title": "Name", "type": "string" } },
+            "type": "object"
+          },
+          "outputs": {
+            "properties": { "output": { "title": "Output", "type": "string" } },
+            "title": "Output",
+            "type": "object"
+          },
+          "script": {
+            "language": "python",
+            "content": "outputs.output = inputs.name",
+            "mode": "default"
+          }
+        },
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } }
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

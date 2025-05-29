@@ -1,0 +1,243 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "232473636354",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "variable_125600ece97",
+        "type": "variable",
+        "definition": {
+          "info": {
+            "title": "v",
+            "description": "You can declare and set variables here",
+            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "setVariables": {
+                "type": "object",
+                "properties": {
+                  "0": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "array", "items": { "type": "integer" } },
+                      "operator": { "type": "string" },
+                      "right": { "type": "array", "items": { "type": "integer" } }
+                    }
+                  },
+                  "1": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "array", "items": { "type": "integer" } },
+                      "operator": { "type": "string" },
+                      "right": { "type": "array", "items": { "type": "integer" } }
+                    }
+                  },
+                  "2": {
+                    "type": "object",
+                    "properties": {
+                      "left": { "type": "string" },
+                      "operator": { "type": "string" },
+                      "right": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "outputs": {
+            "properties": {
+              "array0": { "type": "array", "items": { "type": "integer" } },
+              "array1": { "type": "array", "items": { "type": "integer" } },
+              "ret": { "type": "string" }
+            },
+            "title": "Output",
+            "type": "object"
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {
+          "setVariables": {
+            "0": {
+              "left": { "type": "ref", "content": "@.array0" },
+              "right": { "type": "expression", "content": "[1, 2]" },
+              "operator": "assign"
+            },
+            "1": {
+              "left": { "type": "ref", "content": "@.array1" },
+              "right": { "type": "expression", "content": "[3, 4]" },
+              "operator": "assign"
+            },
+            "2": {
+              "left": { "type": "ref", "content": "@.ret" },
+              "right": { "type": "expression", "content": "''" },
+              "operator": "assign"
+            }
+          }
+        }
+      },
+      {
+        "id": "forloop_bfbf381bcc0",
+        "type": "forloop",
+        "definition": {
+          "info": {
+            "title": "loop_0",
+            "description": "for( initializer; condition; step) {  } ",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/loop_icon.svg"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "initializer": {
+                "type": "object",
+                "properties": { "i": { "type": "integer", "flow": { "index": 0 } } },
+                "flow": { "index": 0 }
+              },
+              "condition": { "type": "boolean", "flow": { "editable": false } },
+              "step": { "type": "string", "flow": { "editable": false } }
+            }
+          },
+          "outputs": { "title": "Output", "type": "object" },
+          "script": { "language": "python", "content": "", "mode": "default" },
+          "localVariables": {
+            "type": "object",
+            "properties": { "i": { "type": "integer", "flow": { "index": 0 } } }
+          }
+        },
+        "data": {
+          "initializer": { "i": { "type": "expression", "content": "0" } },
+          "condition": {
+            "type": "expression",
+            "content": "loop_0.localVariables.i < v.outputs.array0.length"
+          },
+          "step": { "type": "expression", "content": "loop_0.localVariables.i += 1" }
+        },
+        "blocks": [
+          {
+            "id": "forloop_bf381bcc037",
+            "type": "forloop",
+            "definition": {
+              "info": {
+                "title": "loop_1",
+                "description": "for( initializer; condition; step) {  } ",
+                "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/loop_icon.svg"
+              },
+              "inputs": {
+                "type": "object",
+                "properties": {
+                  "initializer": {
+                    "type": "object",
+                    "properties": { "j": { "type": "integer", "flow": { "index": 0 } } },
+                    "flow": { "index": 0 }
+                  },
+                  "condition": { "type": "boolean", "flow": { "editable": false } },
+                  "step": { "type": "string", "flow": { "editable": false } }
+                }
+              },
+              "outputs": { "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" },
+              "localVariables": {
+                "type": "object",
+                "properties": { "j": { "type": "integer", "flow": { "index": 0 } } }
+              }
+            },
+            "data": {
+              "initializer": { "j": { "type": "expression", "content": "0" } },
+              "condition": {
+                "type": "expression",
+                "content": "loop_1.localVariables.j < v.outputs.array1.length"
+              },
+              "step": { "type": "expression", "content": "loop_1.localVariables.j += 1" }
+            },
+            "blocks": [
+              {
+                "id": "variable_74aa99149aa",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "join",
+                    "description": "You can declare and set variables here",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "$.v.outputs.ret" },
+                      "right": {
+                        "type": "expression",
+                        "content": "v.outputs.ret + `${v.outputs.array0[loop_0.localVariables.i]}-${v.outputs.array1[loop_1.localVariables.j]} `"
+                      },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "ret": { "type": "string", "flow": { "index": 1 } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "ret": { "type": "expression", "content": "v.outputs.ret" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

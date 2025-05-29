@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate End - 0 param 1`] = `
+"  //=== end@end | {level:1,blockIndex:0}
+  const end = {}
+  end.data = {
+  }
+  return end.data
+  "
+`;
+
+exports[`translate End - 1 param 1`] = `
+"  //=== end@end | {level:1,blockIndex:0}
+  const end = {}
+  end.data = {
+    data: start.outputs.query,
+  }
+  return end.data
+  "
+`;
+
+exports[`translate End - mores params 1`] = `
+"  //=== end@end | {level:1,blockIndex:0}
+  const end = {}
+  end.data = {
+    v_string: '',
+    v_integer: 10,
+    v_number: 3.14,
+    v_boolean: True,
+    v_array: ['a','b'],
+    v_object: {'a':'abc'},
+    v_map: {'b':'xyz'},
+  }
+  return end.data
+  "
+`;

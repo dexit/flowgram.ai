@@ -1,0 +1,85 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "118041601794",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "callflow_b9671ebabd9",
+        "type": "callflow",
+        "definition": {
+          "info": {
+            "title": "script_adder",
+            "description": "The CallFlow node is used to call a process in the process list you created",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/8290eh7uhpgnuhd/callflow.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "a": { "type": "number", "flow": { "index": 0 }, "default": 1 },
+              "b": { "type": "number", "flow": { "index": 1 }, "default": 2 }
+            }
+          },
+          "systemInputs": {
+            "type": "object",
+            "properties": {
+              "resourceUri": {
+                "type": "string",
+                "default": "logic/script/script_adder.flow"
+              },
+              "nodeType": { "type": "string", "default": "call_flow" },
+              "nodeName": {
+                "type": "string",
+                "default": "blockwise://project/96768002306/flow/120576001794/"
+              },
+              "category": { "type": "string", "default": "/project/96768002306/call_flow" }
+            }
+          },
+          "outputs": {
+            "type": "object",
+            "properties": { "result": { "type": "number", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {
+          "projectId": "96768002306",
+          "teamId": "0",
+          "a": { "type": "expression", "content": "3.0" },
+          "b": { "type": "expression", "content": "4.0" }
+        }
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": { "result": { "type": "number", "flow": { "index": 0 } } }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "result": { "type": "expression", "content": "script_adder.outputs.result" } }
+      }
+    ],
+    "groups": [],
+    "setting": { "errorHandler": "" }
+  }
+}

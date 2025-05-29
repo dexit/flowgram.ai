@@ -1,0 +1,706 @@
+{
+  "type": "flow",
+  "value": {
+    "id": "456883480834",
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "definition": {
+          "info": {
+            "title": "start",
+            "description": "The starting node of the workflow, used to set the information required for the work",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png"
+          },
+          "outputs": { "type": "object", "title": "Output", "properties": {} },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": {}
+      },
+      {
+        "id": "parallel_d0231fd48fc",
+        "type": "parallel",
+        "definition": {
+          "info": {
+            "title": "parallel",
+            "description": "Execute multiple branches simultaneously",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+          },
+          "outputs": {
+            "type": "object",
+            "properties": {
+              "branch_0": {
+                "type": "object",
+                "properties": {
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  }
+                }
+              },
+              "branch_1": {
+                "type": "object",
+                "properties": {
+                  "outputs": {
+                    "type": "object",
+                    "properties": {
+                      "parallel_2_branch_0": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "parallel_2_branch_1": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "branch_2": {
+                "type": "object",
+                "properties": { "outputs": { "title": "Output", "type": "object" } }
+              },
+              "branch_3": {
+                "type": "object",
+                "properties": { "outputs": { "title": "Output", "type": "object" } }
+              },
+              "branch_4": { "type": "object", "properties": { "outputs": { "type": "object" } } }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "blocks": [
+          {
+            "id": "block_8bd0231fd48",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_0", "description": "", "icon": "" },
+              "outputs": {
+                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                "title": "Output",
+                "type": "object"
+              },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "variable_0231fd48fcd",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "v_0",
+                    "description": "You can declare and set variables here",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "@.a" },
+                      "right": { "type": "expression", "content": "\"1\"" },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "block_bd0231fd48f",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_1", "description": "", "icon": "" },
+              "outputs": {
+                "type": "object",
+                "properties": {
+                  "parallel_2_branch_0": {
+                    "type": "object",
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "parallel_2_branch_1": {
+                    "type": "object",
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "variable_31fd48fcd27",
+                "type": "variable",
+                "definition": {
+                  "info": {
+                    "title": "v_1",
+                    "description": "You can declare and set variables here",
+                    "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "setVariables": {
+                        "type": "object",
+                        "properties": {
+                          "0": {
+                            "type": "object",
+                            "properties": {
+                              "left": { "type": "string" },
+                              "operator": { "type": "string" },
+                              "right": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "outputs": {
+                    "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                    "title": "Output",
+                    "type": "object"
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "data": {
+                  "setVariables": {
+                    "0": {
+                      "left": { "type": "ref", "content": "@.a" },
+                      "right": { "type": "expression", "content": "\"2\"" },
+                      "operator": "assign"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "parallel_6ed045cd8b1",
+                "type": "parallel",
+                "definition": {
+                  "info": {
+                    "title": "parallel_2",
+                    "description": "Execute multiple branches simultaneously",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/fhileh7pldpfvht/blockwise/parallel_icon.svg"
+                  },
+                  "outputs": {
+                    "type": "object",
+                    "properties": {
+                      "parallel_2_branch_0": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "parallel_2_branch_1": {
+                        "type": "object",
+                        "properties": {
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "blocks": [
+                  {
+                    "id": "block_68f6ed045cd",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_2_branch_0", "description": "", "icon": "" },
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "variable_068f6ed045c",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "v2",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": {
+                              "setVariables": {
+                                "type": "object",
+                                "properties": {
+                                  "0": {
+                                    "type": "object",
+                                    "properties": {
+                                      "left": { "type": "string" },
+                                      "operator": { "type": "string" },
+                                      "right": { "type": "string" }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": {
+                          "setVariables": {
+                            "0": {
+                              "left": { "type": "ref", "content": "@.a" },
+                              "right": { "type": "expression", "content": "\"3\"" },
+                              "operator": "assign"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "block_f6ed045cd8b",
+                    "type": "block",
+                    "definition": {
+                      "info": { "title": "parallel_2_branch_1", "description": "", "icon": "" },
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "variable_8f6ed045cd8",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "v3",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://sf16-va.tiktokcdn.com/obj/eden-va2/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": {
+                              "setVariables": {
+                                "type": "object",
+                                "properties": {
+                                  "0": {
+                                    "type": "object",
+                                    "properties": {
+                                      "left": { "type": "string" },
+                                      "operator": { "type": "string" },
+                                      "right": { "type": "string" }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "outputs": {
+                            "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                            "title": "Output",
+                            "type": "object"
+                          },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": {
+                          "setVariables": {
+                            "0": {
+                              "left": { "type": "ref", "content": "@.a" },
+                              "right": { "type": "expression", "content": "\"4\"" },
+                              "operator": "assign"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "branch_d19713c6307",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_2", "description": "", "icon": "" },
+              "outputs": { "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "batch_9713c6307d2",
+                "type": "batch",
+                "definition": {
+                  "info": {
+                    "title": "batch",
+                    "description": "ForEach",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Loop.svg"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "concurrency": { "type": "number" },
+                      "list": {
+                        "type": "array",
+                        "items": { "type": "integer", "flow": { "index": 0 } }
+                      }
+                    }
+                  },
+                  "outputs": { "title": "Output", "type": "object" },
+                  "script": { "language": "python", "content": "", "mode": "default" },
+                  "localVariables": {
+                    "type": "object",
+                    "properties": {
+                      "item": { "type": "integer", "flow": { "index": 0 } },
+                      "index": { "type": "integer", "flow": { "index": 1 } }
+                    }
+                  }
+                },
+                "data": {
+                  "concurrency": { "type": "expression", "content": "1" },
+                  "list": { "type": "expression", "content": "[1,2,3]" }
+                },
+                "blocks": [
+                  {
+                    "id": "variable_3e9dba33724",
+                    "type": "variable",
+                    "definition": {
+                      "info": {
+                        "title": "variable_empty",
+                        "description": "You can declare and set variables here",
+                        "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+                      },
+                      "inputs": {
+                        "type": "object",
+                        "properties": { "setVariables": { "type": "object", "properties": {} } }
+                      },
+                      "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "data": { "setVariables": {} }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "branch_19713c6307d",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_3", "description": "", "icon": "" },
+              "outputs": { "title": "Output", "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "forloop_713c6307d24",
+                "type": "forloop",
+                "definition": {
+                  "info": {
+                    "title": "loop",
+                    "description": "for( initializer; condition; step) {  } ",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Loop.svg"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "properties": {
+                      "initializer": {
+                        "type": "object",
+                        "properties": { "i": { "type": "integer", "flow": { "index": 0 } } },
+                        "flow": { "index": 0 }
+                      },
+                      "condition": { "type": "boolean", "flow": { "editable": false } },
+                      "step": { "type": "string", "flow": { "editable": false } }
+                    }
+                  },
+                  "outputs": { "title": "Output", "type": "object" },
+                  "script": { "language": "python", "content": "", "mode": "default" },
+                  "localVariables": {
+                    "type": "object",
+                    "properties": { "i": { "type": "integer", "flow": { "index": 0 } } }
+                  }
+                },
+                "data": {
+                  "initializer": { "i": { "type": "expression", "content": "0" } },
+                  "condition": { "type": "expression", "content": "loop.localVariables.i < 3" },
+                  "step": {
+                    "type": "expression",
+                    "content": "loop.localVariables.i = loop.localVariables.i + 1"
+                  }
+                },
+                "blocks": [
+                  {
+                    "id": "variable_9dba33724f6",
+                    "type": "variable",
+                    "definition": {
+                      "info": {
+                        "title": "variable_empty_1",
+                        "description": "You can declare and set variables here",
+                        "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+                      },
+                      "inputs": {
+                        "type": "object",
+                        "properties": { "setVariables": { "type": "object", "properties": {} } }
+                      },
+                      "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "data": { "setVariables": {} }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "branch_13c6307d243",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_4", "description": "", "icon": "" },
+              "outputs": { "type": "object" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": [
+              {
+                "id": "condition_6307d243e9d",
+                "type": "condition",
+                "definition": {
+                  "info": {
+                    "title": "condition",
+                    "description": "Select branches to execute based on conditions",
+                    "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Condition.svg"
+                  },
+                  "outputs": { "type": "object" },
+                  "script": { "language": "python", "content": "", "mode": "default" }
+                },
+                "blocks": [
+                  {
+                    "id": "case_3c6307d243e",
+                    "type": "case",
+                    "definition": {
+                      "info": {
+                        "title": "condition_case_1",
+                        "description": "Execute the branch when the condition is met",
+                        "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Case.png"
+                      },
+                      "inputs": {
+                        "type": "object",
+                        "properties": { "condition": { "type": "boolean" } }
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "data": { "condition": { "type": "expression", "content": "true" } },
+                    "blocks": [
+                      {
+                        "id": "variable_3724f6b2764",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "variable_empty_2",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": { "setVariables": { "type": "object", "properties": {} } }
+                          },
+                          "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": { "setVariables": {} }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "default_c6307d243e9",
+                    "type": "default",
+                    "definition": {
+                      "info": {
+                        "title": "condition_default",
+                        "description": "Executed when all conditions are not met",
+                        "icon": ""
+                      },
+                      "script": { "language": "python", "content": "", "mode": "default" }
+                    },
+                    "blocks": [
+                      {
+                        "id": "variable_4f6b276461e",
+                        "type": "variable",
+                        "definition": {
+                          "info": {
+                            "title": "variable_empty_3",
+                            "description": "You can declare and set variables here",
+                            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lzp^rjvsI/ljhwZthlaukjlkulzlp/Nodeicons/Variable.png"
+                          },
+                          "inputs": {
+                            "type": "object",
+                            "properties": { "setVariables": { "type": "object", "properties": {} } }
+                          },
+                          "outputs": { "properties": {}, "title": "Output", "type": "object" },
+                          "script": { "language": "python", "content": "", "mode": "default" }
+                        },
+                        "data": { "setVariables": {} }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "branch_b193d4cfb80",
+            "type": "block",
+            "definition": {
+              "info": { "title": "branch_5", "description": "", "icon": "" },
+              "script": { "language": "python", "content": "", "mode": "default" }
+            },
+            "blocks": []
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "definition": {
+          "info": {
+            "title": "end",
+            "description": "The final node of the workflow, used to return the result information after the workflow is run.",
+            "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png"
+          },
+          "inputs": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "msg": { "type": "string" } },
+                "flow": { "index": 0 }
+              },
+              "res": {
+                "properties": {
+                  "branch_0": {
+                    "properties": {
+                      "outputs": {
+                        "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                        "title": "Output",
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "branch_1": {
+                    "properties": {
+                      "outputs": {
+                        "properties": {
+                          "parallel_2_branch_0": {
+                            "properties": {
+                              "outputs": {
+                                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                                "title": "Output",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "parallel_2_branch_1": {
+                            "properties": {
+                              "outputs": {
+                                "properties": { "a": { "flow": { "index": 0 }, "type": "string" } },
+                                "title": "Output",
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "branch_2": {
+                    "properties": { "outputs": { "title": "Output", "type": "object" } },
+                    "type": "object"
+                  },
+                  "branch_3": {
+                    "properties": { "outputs": { "title": "Output", "type": "object" } },
+                    "type": "object"
+                  },
+                  "branch_4": {
+                    "properties": { "outputs": { "type": "object" } },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "script": { "language": "python", "content": "", "mode": "default" }
+        },
+        "data": { "res": { "type": "expression", "content": "parallel.outputs" } }
+      }
+    ],
+    "groups": [],
+    "setting": {
+      "errorHandler": "\"\"\"\n当流程中的某个节点抛出异常时调用的处理函数，可用的变量如下：\n\nobserve: 用于观察或监控流程执行的对象，可以 observe.node_id/observe.node_path 等获取对应的节点信息\n\nflow_outputs: 整个流程的输出数据，可以设置其中的值\n\nnode_outputs: 抛出异常的具体节点的输出数据，可以设置其中的值\n\nexception: 捕获到的异常对象\n\n常用行为：\n1. 如果这个 handler 内部不 raise 异常出去，相当于流程继续执行\n2. 如果这个 handler 里面 raise exception 出去，流程运行结束，返回上层\n3. 这里可以设置 node_outputs\n\n\"\"\"\nraise exception"
+    }
+  }
+}

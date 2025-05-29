@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translate Variable - 0 param 1`] = `
+"  //=== variable@variable | {level:1,blockIndex:0}
+  const variable = {}
+  variable.outputs = {}
+  "
+`;
+
+exports[`translate Variable - 1 param 1`] = `
+"  //=== variable@variable | {level:1,blockIndex:0}
+  const variable = {}
+  variable.outputs = {
+    a: '',
+  }
+  variable.outputs.a = start.outputs.query
+  "
+`;
+
+exports[`translate Variable - more params 1`] = `
+"  //=== variable@variable | {level:1,blockIndex:0}
+  const variable = {}
+  variable.outputs = {
+    v_string: '',
+    v_integer: 0,
+    v_number: 0,
+    v_boolean: false,
+    v_array: [],
+    v_object: {
+      a: 0,
+    },
+    v_map: {},
+  }
+  variable.outputs.v_string = 'abc'
+  variable.outputs.v_integer = 10
+  variable.outputs.v_number = 3.14
+  variable.outputs.v_boolean = True
+  variable.outputs.v_array = ['a','b']
+  variable.outputs.v_object = {'a':1}
+  variable.outputs.v_map = {'b':2}
+  "
+`;
